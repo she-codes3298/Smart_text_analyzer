@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sensitive Info Detector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      width: 320px;
+      padding: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .action-buttons {
+      margin-top: 15px;
+    }
+    .mode-toggle {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .mode-button {
+      flex: 1;
+      padding: 8px;
+      margin: 0 3px;
+      border: 1px solid #ccc;
+      background: #f1f1f1;
+      cursor: pointer;
+      text-align: center;
+    }
+    .mode-button.active {
+      background: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+    #receiverOptions {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h2> Privacy Guardian</h2>
+  
+  <div id="processingOptions">
+    <h3>Sender Options</h3>
+    <p>Protect sensitive information in your message:</p>
+    <form id="optionsForm">
+      <label>
+        <input type="radio" name="actionType" value="encrypt" checked>  Encrypt
+      </label><br>
+
+      <label>
+        <input type="radio" name="actionType" value="mask">  Mask
+      </label><br>
+
+      <label>
+        <input type="radio" name="actionType" value="tokenize">  Tokenize
+      </label><br>
+    </form>
+    <div class="action-buttons">
+      <button id="analyze">Analyze</button>
+      <button id="apply" style="display: none;">Apply</button>
+    </div>
+  </div>
+  
+  <div id="receiverOptions">
+    <h3>Receiver Options</h3>
+    <p>This message contains protected sensitive information.</p>
+    <div class="action-buttons">
+      <button id="restore">View Protected Content</button>
+    </div>
+  </div>
+  
+  <div id="output"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

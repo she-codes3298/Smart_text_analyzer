@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Sensitive Info Detector",
+  "version": "1.0",
+  "description": "Detects and alerts sensitive information in emails and documents.",
+  "permissions": ["scripting", "activeTab", "tabs","storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Sensitive Info Detector"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*",
+            "https://web.whatsapp.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    
+    "http://127.0.0.1:8001/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
